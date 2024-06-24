@@ -11,7 +11,6 @@ import openpyxl
 from pandas_market_calendars import get_calendar
 from requests.adapters import HTTPAdapter
 from requests.exceptions import RequestException, HTTPError, ConnectionError, Timeout
-import sqlite3
 
 # %% [markdown]
 # # Funções
@@ -30,7 +29,7 @@ def workday() -> datetime:
 USER = Path(os.path.expanduser("~"))
 
 # %%
-excel_path = USER / r'OneDrive - WISIR\General - WISIR\3 - OPERACIONAL\1 - DADOS\01 - PYTHON\02 - CONSOLIDADOS\COTAJ_ACAO_CONSOLIDADO.xlsx'
+excel_path = USER / r"C:\Users\GiordanoBrunoGava\OneDrive - WISIR\General - WISIR\3 - OPERACIONAL\1 - DADOS\01 - PYTHON\02 - CONSOLIDADOS\COTAJ_ACAO_CONSOLIDADO.xlsx"
 dados_cotacao__aj_consolidado_excel = pd.read_excel(excel_path)
 
 # %%
@@ -102,6 +101,9 @@ dados_cotacao__aj_novos = dados_cotacao__aj_novos.drop(index = 0)
 parser.parse("12-06-2024", dayfirst = True)
 
 # %%
+dados_cotacao__aj_consolidado_excel
+
+# %%
 dados_cotacao__aj_novos["Data"] = dados_cotacao__aj_novos["Data"].map(lambda row: parser.parse(row, dayfirst = True))
 
 # %%
@@ -109,6 +111,9 @@ dados_cotacao__aj_novos = dados_cotacao__aj_novos.rename(columns = {"Data": "DAT
 
 # %%
 dados_cotacao__aj_novos.reset_index(drop = True)
+
+# %%
+dados_cotacao__aj_novos
 
 # %%
 if dados_cotacao__aj_consolidado_excel.index.duplicated().any():
@@ -121,19 +126,11 @@ dados_cotacao__aj_consolidado_excel = dados_cotacao__aj_consolidado_excel.loc[:,
 dados_cotacao__aj_novos = dados_cotacao__aj_novos.loc[:, ~dados_cotacao__aj_novos.columns.duplicated()]
 
 # %%
-# CONCATENA OS DADOS 
-dados_cotacao_aj_combinado = pd.concat([dados_cotacao__aj_consolidado_excel, dados_cotacao__aj_novos], ignore_index=True)
-dados_cotacao_aj_combinado = dados_cotacao_aj_combinado.drop_duplicates(subset=['DATA']).reset_index(drop=True)
-
-# %%
-dados_cotacao_aj_combinado
-
-# %%
 # SALVA O DF CONCATENANDO NO EXCEL
 output_path = USER / r'OneDrive - WISIR\General - WISIR\3 - OPERACIONAL\1 - DADOS\01 - PYTHON\02 - CONSOLIDADOS\COTAJ_ACAO_CONSOLIDADO.xlsx'
 
-dados_cotacao_aj_combinado = dados_cotacao_aj_combinado.drop(dados_cotacao_aj_combinado.index[-1])
-dados_cotacao_aj_combinado.to_excel(output_path, index=False)
+dados_cotacao__aj_novos = dados_cotacao__aj_novos.drop(dados_cotacao__aj_novos.index[-1])
+dados_cotacao__aj_novos.to_excel(output_path, index=False)
 
 df = pd.read_excel(output_path)
 df.replace(['-', '[]'], np.nan, inplace=True)
