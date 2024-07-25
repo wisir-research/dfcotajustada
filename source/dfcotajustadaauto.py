@@ -124,6 +124,7 @@ for lin in (table := response_2.json()["tables"]["tab0"]):
 dados_cotacao__aj_novos_2 = pd.DataFrame(data_2)
 
 dados_cotacao__aj_novos_2 = dados_cotacao__aj_novos_2.iloc[1:].reset_index(drop=True)
+dados_cotacao__aj_novos_2.reset_index(drop = True)
 
 # %%
 data_3 = list()
@@ -134,6 +135,7 @@ for lin in (table := response_3.json()["tables"]["tab0"]):
 dados_cotacao__aj_novos_3 = pd.DataFrame(data_3)
 
 dados_cotacao__aj_novos_3 = dados_cotacao__aj_novos_3.iloc[1:].reset_index(drop=True)
+dados_cotacao__aj_novos_3.reset_index(drop = True)
 
 # %%
 dados_cotacao__aj_novos = pd.concat([dados_cotacao__aj_novos_1, dados_cotacao__aj_novos_2, dados_cotacao__aj_novos_3], ignore_index=True) 
@@ -166,12 +168,6 @@ parser.parse("12-06-2024", dayfirst = True)
 
 # %%
 dados_cotacao__aj_novos
-
-# %%
-#dados_cotacao__aj_novos["Data"] = dados_cotacao__aj_novos["Data"].map(lambda row: parser.parse(row, dayfirst = True))
-
-# %%
-#dados_cotacao__aj_novos = dados_cotacao__aj_novos.rename(columns = {"Data": "DATA"}).astype(dtype = {"DATA": "datetime64[ns]"})
 
 # %%
 dados_cotacao__aj_novos.reset_index(drop = True)
