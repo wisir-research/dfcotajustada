@@ -173,6 +173,9 @@ dados_cotacao__aj_novos
 dados_cotacao__aj_novos.reset_index(drop = True)
 
 # %%
+dados_cotacao__aj_novos['Data'] = pd.to_datetime(dados_cotacao__aj_novos['Data'])
+
+# %%
 dados_cotacao__aj_novos
 
 # %%
