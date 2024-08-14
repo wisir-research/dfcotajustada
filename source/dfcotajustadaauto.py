@@ -43,8 +43,8 @@ ultima_linha_com_data = dados_cotacao__aj_consolidado_excel['Data'].last_valid_i
 
 # %%
 # CONSTRUIR O PAYLOAD COM AS DATAS DINÂMICAS
-data_ini_1=(datetime.now() - timedelta(days=180)).strftime("%d/%m/%Y")
-data_fim_1=(datetime.now() - timedelta(days=120)).strftime("%d/%m/%Y")
+data_ini_1=(datetime.now() - timedelta(days=360)).strftime("%d/%m/%Y")
+data_fim_1=(datetime.now() - timedelta(days=300)).strftime("%d/%m/%Y")
 
 url = "https://www.comdinheiro.com.br/Clientes/API/EndPoint001.php"
 payload = (
@@ -65,8 +65,8 @@ response_1 = requests.post(url, data=payload, headers=headers, params=querystrin
 
 # %%
 # CONSTRUIR O PAYLOAD COM AS DATAS DINÂMICAS
-data_ini_2=(datetime.now() - timedelta(days=119)).strftime("%d/%m/%Y")
-data_fim_2=(datetime.now() - timedelta(days=60)).strftime("%d/%m/%Y")
+data_ini_2=(datetime.now() - timedelta(days=299)).strftime("%d/%m/%Y")
+data_fim_2=(datetime.now() - timedelta(days=240)).strftime("%d/%m/%Y")
 
 url = "https://www.comdinheiro.com.br/Clientes/API/EndPoint001.php"
 payload = (
@@ -87,8 +87,8 @@ response_2 = requests.post(url, data=payload, headers=headers, params=querystrin
 
 # %%
 # CONSTRUIR O PAYLOAD COM AS DATAS DINÂMICAS
-data_ini_3=(datetime.now() - timedelta(days=59)).strftime("%d/%m/%Y")
-data_fim_3=datetime.now().strftime("%d/%m/%Y") 
+data_ini_3=(datetime.now() - timedelta(days=239)).strftime("%d/%m/%Y")
+data_fim_3=(datetime.now() - timedelta(days=180)).strftime("%d/%m/%Y")
 
 url = "https://www.comdinheiro.com.br/Clientes/API/EndPoint001.php"
 payload = (
@@ -106,6 +106,72 @@ querystring = {"code": "import_data"}
 
 #SOLICITAÇÃO DA API
 response_3 = requests.post(url, data=payload, headers=headers, params=querystring, timeout=1800)
+
+# %%
+# CONSTRUIR O PAYLOAD COM AS DATAS DINÂMICAS
+data_ini_4=(datetime.now() - timedelta(days=179)).strftime("%d/%m/%Y")
+data_fim_4=(datetime.now() - timedelta(days=120)).strftime("%d/%m/%Y")
+
+url = "https://www.comdinheiro.com.br/Clientes/API/EndPoint001.php"
+payload = (
+    f"username=wisir.research&password=wisir.research&URL=HistoricoIndicadoresFundamentalistas001.php%3F"
+    f"%26data_ini%3D{data_ini_4}%26data_fim%3D{data_fim_4}"
+    "%26trailing%3D12%26conv%3DMIXED%26moeda%3DMOEDA_ORIGINAL%26c_c%3Dconsolidado%26m_m%3D1000000"
+    "%26n_c%3D2%26f_v%3D0%26papel%3Dexplode%28STOCK_GUIDE_WISIR%29"
+    "%26indic%3DPRECO_AJ%28%2C%2C%2CA%2CC%29%26periodicidade%3Ddu%26graf_tab%3Dtabela%26desloc_data_analise%3D1"
+    "%26flag_transpor%3D0%26c_d%3Dc%26enviar_email%3D0%26enviar_email_log%3D0%26cabecalho_excel%3Dmodo1"
+    "%26relat_alias_automatico%3Dcmd_alias_01&format=json3"
+)
+        
+headers = {"Content-Type": "application/x-www-form-urlencoded"}
+querystring = {"code": "import_data"}
+
+#SOLICITAÇÃO DA API
+response_4 = requests.post(url, data=payload, headers=headers, params=querystring, timeout=1800)
+
+# %%
+# CONSTRUIR O PAYLOAD COM AS DATAS DINÂMICAS
+data_ini_5=(datetime.now() - timedelta(days=119)).strftime("%d/%m/%Y")
+data_fim_5=(datetime.now() - timedelta(days=60)).strftime("%d/%m/%Y")
+
+url = "https://www.comdinheiro.com.br/Clientes/API/EndPoint001.php"
+payload = (
+    f"username=wisir.research&password=wisir.research&URL=HistoricoIndicadoresFundamentalistas001.php%3F"
+    f"%26data_ini%3D{data_ini_5}%26data_fim%3D{data_fim_5}"
+    "%26trailing%3D12%26conv%3DMIXED%26moeda%3DMOEDA_ORIGINAL%26c_c%3Dconsolidado%26m_m%3D1000000"
+    "%26n_c%3D2%26f_v%3D0%26papel%3Dexplode%28STOCK_GUIDE_WISIR%29"
+    "%26indic%3DPRECO_AJ%28%2C%2C%2CA%2CC%29%26periodicidade%3Ddu%26graf_tab%3Dtabela%26desloc_data_analise%3D1"
+    "%26flag_transpor%3D0%26c_d%3Dc%26enviar_email%3D0%26enviar_email_log%3D0%26cabecalho_excel%3Dmodo1"
+    "%26relat_alias_automatico%3Dcmd_alias_01&format=json3"
+)
+        
+headers = {"Content-Type": "application/x-www-form-urlencoded"}
+querystring = {"code": "import_data"}
+
+#SOLICITAÇÃO DA API
+response_5 = requests.post(url, data=payload, headers=headers, params=querystring, timeout=1800)
+
+# %%
+# CONSTRUIR O PAYLOAD COM AS DATAS DINÂMICAS
+data_ini_6=(datetime.now() - timedelta(days=59)).strftime("%d/%m/%Y")
+data_fim_6=datetime.now().strftime("%d/%m/%Y") 
+
+url = "https://www.comdinheiro.com.br/Clientes/API/EndPoint001.php"
+payload = (
+    f"username=wisir.research&password=wisir.research&URL=HistoricoIndicadoresFundamentalistas001.php%3F"
+    f"%26data_ini%3D{data_ini_6}%26data_fim%3D{data_fim_6}"
+    "%26trailing%3D12%26conv%3DMIXED%26moeda%3DMOEDA_ORIGINAL%26c_c%3Dconsolidado%26m_m%3D1000000"
+    "%26n_c%3D2%26f_v%3D0%26papel%3Dexplode%28STOCK_GUIDE_WISIR%29"
+    "%26indic%3DPRECO_AJ%28%2C%2C%2CA%2CC%29%26periodicidade%3Ddu%26graf_tab%3Dtabela%26desloc_data_analise%3D1"
+    "%26flag_transpor%3D0%26c_d%3Dc%26enviar_email%3D0%26enviar_email_log%3D0%26cabecalho_excel%3Dmodo1"
+    "%26relat_alias_automatico%3Dcmd_alias_01&format=json3"
+)
+        
+headers = {"Content-Type": "application/x-www-form-urlencoded"}
+querystring = {"code": "import_data"}
+
+#SOLICITAÇÃO DA API
+response_6 = requests.post(url, data=payload, headers=headers, params=querystring, timeout=6000)
 
 # %%
 data_1 = list()
@@ -138,7 +204,40 @@ dados_cotacao__aj_novos_3 = dados_cotacao__aj_novos_3.iloc[1:].reset_index(drop=
 dados_cotacao__aj_novos_3.reset_index(drop = True)
 
 # %%
-dados_cotacao__aj_novos = pd.concat([dados_cotacao__aj_novos_1, dados_cotacao__aj_novos_2, dados_cotacao__aj_novos_3], ignore_index=True) 
+data_4 = list()
+for lin in (table := response_4.json()["tables"]["tab0"]):
+    data_4.append(table[lin])
+
+# %%
+dados_cotacao__aj_novos_4 = pd.DataFrame(data_4)
+
+dados_cotacao__aj_novos_4 = dados_cotacao__aj_novos_4.iloc[1:].reset_index(drop=True)
+dados_cotacao__aj_novos_4.reset_index(drop = True)
+
+# %%
+data_5 = list()
+for lin in (table := response_5.json()["tables"]["tab0"]):
+    data_5.append(table[lin])
+
+# %%
+dados_cotacao__aj_novos_5 = pd.DataFrame(data_5)
+
+dados_cotacao__aj_novos_5 = dados_cotacao__aj_novos_5.iloc[1:].reset_index(drop=True)
+dados_cotacao__aj_novos_5.reset_index(drop = True)
+
+# %%
+data_6 = list()
+for lin in (table := response_6.json()["tables"]["tab0"]):
+    data_6.append(table[lin])
+
+# %%
+dados_cotacao__aj_novos_6 = pd.DataFrame(data_6)
+
+dados_cotacao__aj_novos_6 = dados_cotacao__aj_novos_6.iloc[1:].reset_index(drop=True)
+dados_cotacao__aj_novos_6.reset_index(drop = True)
+
+# %%
+dados_cotacao__aj_novos = pd.concat([dados_cotacao__aj_novos_1, dados_cotacao__aj_novos_2, dados_cotacao__aj_novos_3, dados_cotacao__aj_novos_4, dados_cotacao__aj_novos_5, dados_cotacao__aj_novos_6], ignore_index=True) 
 
 # %%
 dados_cotacao__aj_novos = dados_cotacao__aj_novos.rename(
