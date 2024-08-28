@@ -272,7 +272,17 @@ dados_cotacao__aj_novos
 dados_cotacao__aj_novos.reset_index(drop = True)
 
 # %%
-dados_cotacao__aj_novos['Data'] = pd.to_datetime(dados_cotacao__aj_novos['Data'])
+# dados_cotacao__aj_novos['Data'] = pd.to_datetime(dados_cotacao__aj_novos['Data'])
+
+# %%
+# Garantindo que todos os valores vazios sejam reconhecidos como NaN
+dados_cotacao__aj_novos.replace('', np.nan, inplace=True)
+
+# Verificando se todas as colunas, exceto a primeira, estão vazias
+linhas_para_remover = dados_cotacao__aj_novos.iloc[:, 1:].isna().all(axis=1)
+
+# Removendo as linhas onde todas as colunas, exceto a primeira, estão vazias
+dados_cotacao__aj_novos = dados_cotacao__aj_novos[~linhas_para_remover]
 
 # %%
 dados_cotacao__aj_novos
